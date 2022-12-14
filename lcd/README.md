@@ -17,8 +17,9 @@
 STM32F103战舰V3，资源丰富，接口多，功能强大，性价比高，资料全，外观炫酷，布局人性化，配件丰富，配件的接口丰富，是学习嵌入式的好开发板
 
 开发板外观如下图所示：
+![image](https://user-images.githubusercontent.com/78582677/207586119-1832a9bd-45ff-43de-8424-17af2ee28165.png)
 
-![board](figures/board.png)
+
 
 该开发板常用 **板载资源** 如下：
 
