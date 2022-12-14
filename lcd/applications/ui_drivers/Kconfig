@@ -1,0 +1,154 @@
+menuconfig PKG_USING_SSUD
+    bool "spi screen unified drive"
+    default n
+
+if PKG_USING_SSUD
+
+    menu "Screen information"
+        choice
+            prompt "Screen display controller"
+            default SSUD_DISP_CONTROLLER_ST7789
+            config SSUD_DISP_CONTROLLER_ST7789
+                bool "st7789"
+
+            config SSUD_DISP_CONTROLLER_ST7735S
+                bool "st7735s"
+                
+            config SSUD_DISP_CONTROLLER_ILI9163C
+                bool "ili9163c"
+
+            config SSUD_DISP_CONTROLLER_ILI9341
+                bool "ili9341"
+
+            config SSUD_DISP_CONTROLLER_GC9A01
+                bool "GC9A01"                
+        endchoice
+
+        choice
+            prompt "Screen display orientation"
+            default SSUD_DISP_ORIENTATION_PORTRAIT if !SSUD_DISP_CONTROLLER_SSD1306
+            default SSUD_DISP_ORIENTATION_LANDSCAPE if SSUD_DISP_CONTROLLER_SSD1306
+            config SSUD_DISP_ORIENTATION_PORTRAIT
+                bool "Portrait" if !SSUD_DISP_CONTROLLER_SSD1306
+            config SSUD_DISP_ORIENTATION_PORTRAIT_INVERTED
+                bool "Portrait inverted" if !SSUD_DISP_CONTROLLER_SSD1306
+            config SSUD_DISP_ORIENTATION_LANDSCAPE
+                bool "Landscape"
+            config SSUD_DISP_ORIENTATION_LANDSCAPE_INVERTED
+                bool "Landscape inverted"
+        endchoice
+
+        config SSUD_DISP_ORIENTATION
+            int
+            default 0 if SSUD_DISP_ORIENTATION_PORTRAIT
+            default 1 if SSUD_DISP_ORIENTATION_PORTRAIT_INVERTED
+            default 2 if SSUD_DISP_ORIENTATION_LANDSCAPE
+            default 3 if SSUD_DISP_ORIENTATION_LANDSCAPE_INVERTED
+
+        config SSUD_DISP_HOR_RES
+            int "Horizontal resolution"
+            range 1 2000
+            default 240  
+
+        config SSUD_DISP_VER_RES
+            int "Vertical resolution"
+            range 1 2000
+            default 240
+
+        config SSUD_DISP_SOFT_RESET
+            bool "Use software reset"
+            default n
+
+        config SSUD_DISP_INVERT_COLORS
+            bool "Screen invert colors"
+            default n
+    endmenu
+    
+    menu "Screen backlight control configuration"
+        choice
+            default SSUD_BACKLIGHT_SWITCH
+            prompt "Backlight Control" if (! ( SSUD_DISP_CONTROLLER_SH1107 || SSUD_DISP_CONTROLLER_SSD1306 ) )
+
+            config SSUD_BACKLIGHT_OFF
+                bool
+                prompt "Not Used"
+
+            config SSUD_BACKLIGHT_SWITCH
+                bool
+                prompt "Switch control"
+
+            config SSUD_BACKLIGHT_PWM
+                bool
+                prompt "PWM control"
+        endchoice
+
+        if !SSUD_BACKLIGHT_OFF
+            choice
+                prompt "Backlight active level"
+                default SSUD_BACKLIGHT_ACTIVE_ISHIGH
+
+                config SSUD_BACKLIGHT_ACTIVE_ISHIGH
+                    bool
+                    prompt "high"
+
+                config SSUD_BACKLIGHT_ACTIVE_ISLOW
+                    bool
+                    prompt "low"
+            endchoice
+        endif
+
+        if SSUD_BACKLIGHT_SWITCH
+            config SSUD_BACKLIGHT_SWITCH_PIN
+                int "backlight switch pin"
+                default 31
+        endif
+
+        if SSUD_BACKLIGHT_PWM
+            config SSUD_BACKLIGHT_PWM_DEVNAME
+                string "backlight pwm device name"
+                default "pwm1"
+            config SSUD_BACKLIGHT_PWM_CHANNEL
+                int "backlight pwm channel num"
+                default 1
+            config SSUD_BACKLIGHT_PWM_BRIGHTNESS
+                int "default backlight brightness"
+                range 0 100
+                default 50
+        endif
+    endmenu
+
+    menu "Screen peripheral driver configuration"
+        menu "SPI peripheral information"
+            config SSUD_DRV_SPI_BUS_NAME
+                string "the spi bus name"
+                default "spi1"
+
+            config SSUD_DRV_SPI_DEV_NAME
+                string "the spi device name"
+                default "lcddev"
+
+            config SSUD_DRV_SPI_CS_PIN
+                int "the spi cs pin number"
+                default 116
+
+            config SSUD_DRV_SPI_RES_PIN
+                int "the spi res pin number"
+                default 116
+
+            config SSUD_DRV_SPI_DC_PIN
+                int "the spi dc pin number"
+                default 116
+
+            config  SSUD_DRV_SPI_FREQUENCY
+                int "the spi bus clock frequency(MHz)"
+                range 0 400
+                default 20 if SSUD_DISP_CONTROLLER_ST7789 ||SSUD_DISP_CONTROLLER_GC9A01 || SSUD_DISP_CONTROLLER_ILI9486
+                default 40 if SSUD_DISP_CONTROLLER_ST7796S
+                default 16 if SSUD_DISP_CONTROLLER_ILI9481
+                default 25 if SSUD_DISP_CONTROLLER_HX8357
+                default 8 if SSUD_DISP_CONTROLLER_SH1107
+                default 5 if SSUD_DISP_CONTROLLER_JD79653A || SSUD_DISP_CONTROLLER_UC8151D
+                default 40
+        endmenu
+    endmenu
+endif 
