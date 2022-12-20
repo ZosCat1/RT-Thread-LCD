@@ -79,6 +79,8 @@
 #define RT_SERIAL_RB_BUFSZ 64
 #define RT_USING_PIN
 #define RT_USING_PWM
+#define RT_USING_RTC
+#define RT_USING_ALARM
 #define RT_USING_SPI
 
 /* Using USB */
@@ -269,6 +271,8 @@
 #define BSP_USING_PWM1_CH1
 #define BSP_USING_SPI
 #define BSP_USING_SPI1
+#define BSP_USING_ONCHIP_RTC
+#define BSP_RTC_USING_LSE
 
 /* Board extended module Drivers */
 
