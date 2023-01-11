@@ -17,8 +17,8 @@
 【此处简单介绍一下开发板】
 
 开发板外观如下图所示：
+![5f52000e8148e01f51626d40f35b915](https://user-images.githubusercontent.com/78582677/211826402-46a93617-7759-4b29-8344-34db7c43cd2b.jpg)
 
-![VET6](E:\RTT\RT-Thread-LCD\VET6\figures\VET6.jpg)
 
 该开发板常用 **板载资源** 如下：
 
