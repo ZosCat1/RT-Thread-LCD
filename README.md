@@ -17,12 +17,10 @@
 
 第一步鼠标右击空白处导入工程。
 
-![image-20230111214705218](C:\Users\ZXY\AppData\Roaming\Typora\typora-user-images\image-20230111214705218.png)
+![f9f11d23776ea41ce56872fbe30c8f5](https://user-images.githubusercontent.com/78582677/211826072-e5746c7d-d9bd-4a81-96dc-dd5d43df5831.png)
 
 第二部选择Studio项目导入到工作空间中
-
-![image-20230111214815856](C:\Users\ZXY\AppData\Roaming\Typora\typora-user-images\image-20230111214815856.png)
+![image](https://user-images.githubusercontent.com/78582677/211826184-fee84d8f-468b-43fc-8f1b-d54e75e6087f.png)
 
 选择工程文件然后导入即可
-
-![image-20230111214856382](C:\Users\ZXY\AppData\Roaming\Typora\typora-user-images\image-20230111214856382.png)
+![image](https://user-images.githubusercontent.com/78582677/211826232-91ac39f8-7cef-499e-b334-8c25354141dd.png)
