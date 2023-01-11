@@ -13,7 +13,7 @@
 
 ## 二、工程导入RT-Thread Studio
 
-![image-20230111214559229](C:\Users\ZXY\AppData\Roaming\Typora\typora-user-images\image-20230111214559229.png)
+![e10b516c7a757c3bcf8c36ba537bb0d](https://user-images.githubusercontent.com/78582677/211825901-d208090a-fc49-4ef8-ba51-d92b071b171d.png)
 
 第一步鼠标右击空白处导入工程。
 
