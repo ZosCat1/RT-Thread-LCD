@@ -31,12 +31,13 @@ menu "Onboard Peripheral Drivers"
         select BSP_USING_ADC1
         default n
         
-    config BSP_USING_AH10
+    config AHT10_USING_SENSOR_DEVICE
         bool "Enable AHT10"
         select BSP_USING_I2C1
         select RT_USING_SENSOR
+        select RT_USING_SENSOR_CMD        
+        select PKG_USING_SENSORS_DRIVERS
         select PKG_USING_AHT10
-        select RT_USING_SENSOR_CMD
         default n
 	    
 endmenu
